@@ -1,0 +1,32 @@
+.cardBox{
+    width: 28em;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 40px;
+    margin: 1em;
+    overflow-y: hidden;
+}
+.cardBox img{
+    position: relative;
+    height: 28em;
+    width: auto;
+    min-width: 100%;
+    object-fit: cover;
+}
+.cardBox ul{
+   display: flex;
+   justify-content: space-around;
+   width: 28em;
+}
+.cardBox>p{
+   padding: 0px 2vh;
+ }
+
+.decrecipe{
+    height: 80px;
+    overflow-y: hidden;
+}

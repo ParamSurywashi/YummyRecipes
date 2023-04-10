@@ -1,0 +1,22 @@
+#forminput{
+        width: 25%;
+        height: 25em;
+        overflow: hidden;
+        margin: auto;
+        padding: 5em;
+        background: #23463f;
+        border-radius: 15px ;
+}
+
+#addrecipe{
+    width: 9em;
+    height: 2em;
+    border: none;
+    border-radius: 12em;
+    background-color: #b6f615;
+    font-size: 18px;
+}
+.boxAddRecipe{
+    height: 45em;
+    background: linear-gradient(-45deg, #fdbc55ba, #e73c7e, #d5c323, #d58223);
+}

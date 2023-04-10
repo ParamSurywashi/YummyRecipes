@@ -1,0 +1,30 @@
+.searchBox{
+    height: auto;
+    background: linear-gradient(-45deg, #fdbc55ba, #e73c7e, #d5c323, #d58223);
+}
+.searchInputBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10em;
+}
+.searchInputBox > input{
+    width: 50%;
+    height: 2em;
+    font-family: cursive;
+    font-weight: bold;
+    font-size: 22px;
+}
+.searchInputBox > button{
+    padding: 0px 1vh;
+    height: 6vh;
+    border-radius: 20%;
+    font-family: cursive;
+    font-weight: bold;
+    font-size: 22px;
+}
+#listRecipes{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 1em;
+}

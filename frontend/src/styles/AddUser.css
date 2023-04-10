@@ -1,0 +1,85 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial';
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 51em;
+    background: linear-gradient(-45deg, #fdbc55ba, #e73c7e, #d5c323, #d58223);
+	animation: gradient 15s ease infinite;
+    padding-bottom: 1vh;
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+.register{
+         width: 25%;
+         height: 25em;
+        overflow: hidden;
+        margin: auto;
+        padding: 5em;
+        background: #23463f;
+        border-radius: 15px ;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+}
+#signH2{
+    text-align: center;
+    color: #f51761;
+    font-size: 56px;
+    margin-top: -3vh;
+    margin-bottom: 2vh;
+}
+
+.form__field input{
+    width: 100%;
+    height: 3em;
+    border: none;
+    border-radius: 0em 1em 0px 1em;
+    padding-left: 8px;
+    margin-bottom: 1em;
+    box-shadow: 5px 8px #888888;
+}
+
+#signUp{
+    width: 9em;
+    height: 2em;
+    border: none;
+    border-radius: 12em;
+    background-color: #b6f615;
+    font-size: 18px;
+}
+#msg{
+    color: red;
+}
+
+.burger{
+    height: 60%;
+    position: relative;
+    animation: burgerGradient 4s ease infinite;
+}
+@keyframes burgerGradient {
+    0%   {left:0px; top:0px;}
+    50%  {left:250px; top:0px;}
+    100%  {left:0px; top:0px;}
+}
+
+.guestLog{
+    text-decoration: none;
+    color: salmon;
+    width: fit-content;
+}
