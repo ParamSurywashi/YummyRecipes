@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-//const cors = require('cors');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -15,7 +15,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//app.use(cors());
+app.use(cors());
 //app.use(express.static('frontend/build'));
 
 main().catch(err => console.log(err));
