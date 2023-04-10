@@ -6,7 +6,7 @@ function Search() {
     const [searchInput, setSearchInput] = useState("");
     const [searchRecipeList , setSearchRecipeList] = useState([]);
     function fetchData(){
-      fetch(`/search/${searchInput}`).then((res)=>res.json())
+      fetch(`https://yummy-recipe-param.onrender.com/search/${searchInput}`).then((res)=>res.json())
         .then((data)=>{
           setSearchRecipeList(data);
         });

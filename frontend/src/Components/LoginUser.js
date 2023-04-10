@@ -15,7 +15,7 @@ function LoginUser() {
     console.log(loginValue);
  //   setloginValue({...loginValue, token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhcmFtQGdtYWlsLmNvbSIsImlhdCI6MTY4MDY5MTMzOH0.sg3d6V3UJes7ok9jjym_T3iMvqQ1bDp4msAz7t33r4A"})
   
- fetch('/loginuser',{
+ fetch('https://yummy-recipe-param.onrender.com/loginuser',{
         method: 'post',
         body: JSON.stringify(loginValue),
         headers:{

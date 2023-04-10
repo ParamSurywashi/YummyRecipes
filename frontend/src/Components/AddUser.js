@@ -11,7 +11,7 @@ function AddUser() {
 
     //console.log(inputValue);
     if(inputValue.password === inputValue.conformpassword){
-    fetch('/adduser',{
+    fetch('https://yummy-recipe-param.onrender.com/adduser',{
         method: 'post',
         body: JSON.stringify(inputValue),
         headers:{

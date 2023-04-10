@@ -7,7 +7,7 @@ function Home() {
   const [recipeList , setRecipeList] = useState([]);
 
   function fetchRecipes(){
-    return fetch('/recipe').then((res)=>res.json())
+    return fetch('https://yummy-recipe-param.onrender.com/recipe').then((res)=>res.json())
     .then((data)=>{
       console.log(data);
       setRecipeList(data);

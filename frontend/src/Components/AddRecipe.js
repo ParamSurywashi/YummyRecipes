@@ -10,7 +10,7 @@ function AddRecipe() {
       e.preventDefault();
       
       console.log(recipeValue);
-        fetch('/recipe/addrecipes',{
+        fetch('https://yummy-recipe-param.onrender.com/recipe/addrecipes',{
           method: 'post',
           body: JSON.stringify(recipeValue),
           headers:{
