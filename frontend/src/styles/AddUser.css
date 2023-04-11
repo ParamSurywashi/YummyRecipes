@@ -68,7 +68,7 @@ body
 }
 
 .burger{
-    height: 60%;
+    height: 49%;
     position: relative;
     animation: burgerGradient 4s ease infinite;
 }

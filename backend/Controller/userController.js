@@ -20,15 +20,15 @@ exports.adduser = async (req,res)=>{
 exports.loginuser = async (req,res)=>{
     // console.log(req.body);
      try{
-       let token = req.headers["x-access-token"];
-       if (!token) {
-          return res.status(403).send({ message: "No token provided!" });
-        }
+      //  let token = req.headers["x-access-token"];
+      //  if (!token) {
+      //     return res.status(403).send({ message: "No token provided!" });
+      //   }   && token === user.token
  
        const user =  await User.findOne({email: req.body.email});
         const isAuth = bcrypt.compareSync(req.body.password, user.password);
  
-           if(user && isAuth && token === user.token){
+           if(user && isAuth ){
               res.json({"validate" : true, "username" : user.username});
               res.end();
            }else{
