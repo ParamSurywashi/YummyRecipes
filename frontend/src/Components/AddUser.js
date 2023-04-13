@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/AddUser.css'
 function AddUser() {
-    const [inputValue, setInputValue] = useState({}); 
+    const [inputValue, setInputValue] = useState({ username : "", email : "", password:"", conformpassword:""}); 
     const [value, setValue] = useState({});
     const [message, setMessage] = useState("");
   const handleSubmitButton = (event) => { 
@@ -36,19 +36,19 @@ function AddUser() {
       <form onSubmit={handleSubmitButton} className="form">
 
       <div className="form__field" onSubmit={handleSubmitButton}>
-          <input type="text" placeholder="Username" value={inputValue.username} onChange={(e)=>setInputValue({...inputValue, username : e.target.value })} />
+          <input type="text" placeholder="Username" value={inputValue.username} onChange={(e)=>setInputValue({...inputValue, username : e.target.value })} required/>
         </div>
 
         <div className="form__field">
-          <input type="email" placeholder="Email Id" value={inputValue.email} onChange={(e)=>setInputValue({...inputValue, email : e.target.value })}/>
+          <input type="email" placeholder="Email Id" value={inputValue.email} onChange={(e)=>setInputValue({...inputValue, email : e.target.value })} required/>
         </div>
 
         <div className="form__field">
-          <input type="password" placeholder="Password" value={inputValue.password} onChange={(e)=>setInputValue({...inputValue, password : e.target.value })}  />
+          <input type="password" placeholder="Password" value={inputValue.password} onChange={(e)=>setInputValue({...inputValue, password : e.target.value })}  required/>
         </div>
 
         <div className="form__field">
-          <input type="password" placeholder="Conform Password" value={inputValue.conformpassword} onChange={(e)=>setInputValue({...inputValue, conformpassword : e.target.value })}  />
+          <input type="password" placeholder="Conform Password" value={inputValue.conformpassword} onChange={(e)=>setInputValue({...inputValue, conformpassword : e.target.value })}  required/>
         </div>
 
         <div className="form__field">

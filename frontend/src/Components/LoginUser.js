@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/LoginUser.css';
 function LoginUser() {
-    const [loginValue, setloginValue] = useState({}); 
+    const [loginValue, setloginValue] = useState({email : "", password:""}); 
     const [value, setValue] = useState("");
     const [message, setMessage] = useState("");
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ function LoginUser() {
         }
     }).then(res=>res.json())
     .then(data=>{
-         // console.log(data);
+          console.log(data);
          
          if(data.validate){
           setValue(data.username);
@@ -34,6 +34,7 @@ function LoginUser() {
             },1500)
          }else{
           setMessage("Login failed");
+          document.getElementById("msg").style.color="green";
          }
          
           setloginValue({email : "", password:""});
@@ -53,11 +54,11 @@ function LoginUser() {
       <form onSubmit={handleSubmitButton} className="form">
 
         <div className="form__field">
-          <input type="email" placeholder="Email Id" value={loginValue.email} onChange={(e)=>setloginValue({...loginValue, email : e.target.value })}/>
+          <input type="email" placeholder="Email Id" value={loginValue.email} onChange={(e)=>setloginValue({...loginValue, email : e.target.value })} required/>
         </div>
 
         <div className="form__field">
-          <input type="password" placeholder="Password" value={loginValue.password} onChange={(e)=>setloginValue({...loginValue, password : e.target.value })}  />
+          <input type="password" placeholder="Password" value={loginValue.password} onChange={(e)=>setloginValue({...loginValue, password : e.target.value })}  required/>
         </div>
 
         <div className="form__field">

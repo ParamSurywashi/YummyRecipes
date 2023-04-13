@@ -24,7 +24,7 @@ function Home() {
        <div>
       {recipeList.map((recipe)=>{
         return  (
-          <div className='cardBox' key={recipe.recid}>
+          <div className='cardBox' key={recipe.reckey}>
              <RecipeCard recipe={recipe} />
          </div>)
        }) 

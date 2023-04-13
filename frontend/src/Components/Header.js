@@ -6,19 +6,30 @@ import { IoFastFoodOutline, IoRestaurantSharp } from "react-icons/io5";
 import firstVideo from "../navvideo/firstvideo.mp4";
 
 function Header() {
-  const [isHoveronHome, setHoveronHome] = useState(false);
+  const [isHoveronHome, setHoveronHome] = useState(true);
+
+  function getVideo(vidlink){
+    
+
+      // return (
+        
+      // )
+  }
+  // document.getElementById("fvid").addEventListener("mouseover", () => {
+  //       setHoveronHome(true);
+  // });
+  
   return (
     <>
     <div className="headers">
        <Link to="/" id='imgLogos'><div><img src="https://cdn.pixabay.com/photo/2012/04/05/00/36/hamburger-25357_960_720.png" /></div> </Link>
       <ul>
-        <Link to="/home" className='linkComp' id='fvid'   onMouseEnter={() => setHoveronHome(true)}
-        onMouseLeave={() => setHoveronHome(false)}>
-           { (isHoveronHome) ? ( <> <IoRestaurantSharp /> Home </> ) : (
-          <video  loop autoPlay muted playsinline className='vidbox'>
-              <source src={firstVideo} type="video/mp4"/>
-         </video>
-          ) }</Link>
+        <Link to="/home" className='linkComp' id='fvid' onMouseEnter={()=>setHoveronHome(false)} onMouseLeave={()=>setHoveronHome(true)}>
+          <> <IoRestaurantSharp /> Home </> 
+          {(isHoveronHome) ? ("") : ( <video autoPlay loop muted playsInline className='vidbox'>
+             <source src={firstVideo} type="video/mp4"/>
+         </video>)}
+        </Link>
       </ul>
       <ul>
         <Link to="/" className='linkComp'> <MdFoodBank /> Shows Recipe </Link>

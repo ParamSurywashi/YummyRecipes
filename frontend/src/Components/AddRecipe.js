@@ -3,7 +3,7 @@ import "../styles/AddRecipe.css";
 
 
 function AddRecipe() {
-    const [recipeValue, setRecipeValue] = useState({}); 
+    const [recipeValue, setRecipeValue] = useState({ recid : 0, title : "", ingredent:"", img:"", recipe : ""}); 
     const [dbnextid, setDbNewId] = useState(0);
     const handleAddRecipeBtn = (e)=>{
     

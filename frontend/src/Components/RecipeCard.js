@@ -5,13 +5,15 @@ function RecipeCard({recipe}) {
   return (
     <>
        <h1>{recipe.title}</h1>
-       <ul>
+       <h5>{recipe.ingredent}</h5>
+       {/* <ul>
           {
-             recipe && recipe.ingredent &&  recipe.ingredent.map((ingrident, idx)=>{
-              return <li key={idx}>{ingrident}</li>
+             recipe && recipe.ingredent &&  recipe.ingredent.map((ingrident)=>{
+              console.log(index)
+              return <li key={index}>{ingrident}</li>
             })
           }
-       </ul>
+       </ul> */}
        <img src={recipe.img} alt={recipe.title} />
        <p className='decrecipe'>{recipe.recipe}</p>
     </>
