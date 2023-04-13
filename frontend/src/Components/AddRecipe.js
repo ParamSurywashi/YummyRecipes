@@ -7,10 +7,10 @@ function AddRecipe() {
     const [recipeValue, setRecipeValue] = useState({ recid : 0, title : "", ingredent:"", img:"", recipe : ""}); 
     const [dbnextid, setDbNewId] = useState(0);
     const [message, setMessage] = useState("");
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const handleAddRecipeBtn = (e)=>{
-    
+     setMessage("");
       e.preventDefault();
       setLoading(false);
       console.log(recipeValue);
