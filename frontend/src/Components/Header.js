@@ -6,7 +6,8 @@ import { IoFastFoodOutline, IoRestaurantSharp } from "react-icons/io5";
 import firstVideo from "../navvideo/firstvid.mp4";
 import secondVideo from "../navvideo/secondvid.mp4";
 import addrecvid from "../navvideo/addrecvid.mp4";
-import searchVideo from "../navvideo/searchvid.mp4"
+import searchVideo from "../navvideo/searchvid.mp4";
+import imgLogo from "../navvideo/imgLogos.png";
 
 function Header() {
   const [isHoveronHome, setHoveronHome] = useState(true);
@@ -17,7 +18,7 @@ function Header() {
   return (
     <>
     <div className="headers">
-       <Link to="/" id='imgLogos'><div><img src="https://cdn.pixabay.com/photo/2012/04/05/00/36/hamburger-25357_960_720.png" /></div> </Link>
+       <Link to="/" id='imgLogos'><div><img src={imgLogo} /></div> </Link>
       <ul>
         <Link to="/home" className='linkComp' id='fvid' onMouseEnter={()=>setHoveronHome(false)} onMouseLeave={()=>setHoveronHome(true)}>
           <span id='hometxtbox'> <IoRestaurantSharp /> Home </span> 
