@@ -43,27 +43,19 @@
 }
 
 .vidbox{
-    border-radius: 25%;
+    border-radius: 30%;
     object-fit: cover;
     height: 3em;
    width: 8em;
      margin-left: -8em; 
     opacity: 0.7;
 }
-
-/* #homevideo{
-    width: 8em;
-    margin-left: -8em;
+#hometxtbox{
+    margin-right: 2em;
 }
-#showrecvideo{
-    width: 8em;
-    margin-left: -8em;
+#addfoodbox{
+    margin-right: 2vh;
 }
-#addrecvid{
-    width: 8em;
-    margin-left: -8em;
+#searchtxtbox{
+    margin-right: 2em;
 }
-#searchrecvid{
-    width: 8em;
-    margin-left: -8em;
-} */
