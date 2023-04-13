@@ -20,3 +20,7 @@
     height: 45em;
     background: linear-gradient(-45deg, #fdbc55ba, #e73c7e, #d5c323, #d58223);
 }
+.newloader{
+    margin-left: 14em;
+    margin-top: -3em;
+}
