@@ -1,18 +1,25 @@
 import React from 'react'
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
+import { BallTriangle } from  'react-loader-spinner';
+
 import '../styles/LoginUser.css';
+
 function LoginUser() {
     const [loginValue, setloginValue] = useState({email : "", password:""}); 
     const [value, setValue] = useState("");
     const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
   const handleSubmitButton = (event) => { 
     setValue("");
     setMessage("");
+    setLoading(false);
     event.preventDefault();
     console.log(loginValue);
+
  //   setloginValue({...loginValue, token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhcmFtQGdtYWlsLmNvbSIsImlhdCI6MTY4MDY5MTMzOH0.sg3d6V3UJes7ok9jjym_T3iMvqQ1bDp4msAz7t33r4A"})
   
  fetch('https://yummy-recipe-param.onrender.com/loginuser',{
@@ -25,18 +32,20 @@ function LoginUser() {
     }).then(res=>res.json())
     .then(data=>{
           console.log(data);
+          
          
          if(data.validate){
           setValue(data.username);
           setMessage("Successfully Login");
+          document.getElementById("msg").style.color="green";
             setTimeout(()=>{
               navigate('/home');
             },1500)
          }else{
           setMessage("Login failed");
-          document.getElementById("msg").style.color="green";
+          document.getElementById("msg").style.color="red";
          }
-         
+         setLoading(true);
           setloginValue({email : "", password:""});
     })
    
@@ -64,7 +73,18 @@ function LoginUser() {
         <div className="form__field">
           <button type="submit" id='login'>Login </button>
         </div>
-
+         {
+          (loading) ? ("") : (<BallTriangle
+            height={100}
+            width={100}
+            radius={4}
+            color="#4fa94d"
+            ariaLabel="ball-triangle-loading"
+            wrapperClass={'myLoading'}
+            wrapperStyle=""
+            visible={true}
+          />)
+         }
       </form>
       <Link to={"/home"} className="guestLog" >Using Guest User</Link>
       <Link to={"/adduser"} className="account">You don't have account? Register Here</Link>

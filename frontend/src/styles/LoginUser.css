@@ -102,3 +102,8 @@
     margin: 0;
     padding: 0;
 }
+.myLoading{
+    position: absolute;
+    margin-left: 18em;
+    margin-top: -2em;
+}

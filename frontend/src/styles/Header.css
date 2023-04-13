@@ -23,6 +23,9 @@
     color: black;
     font-weight: bold;
     text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /* .linkComp:hover{
   color: red;
@@ -40,15 +43,27 @@
 }
 
 .vidbox{
-    border-radius: 15%;
+    border-radius: 25%;
     object-fit: cover;
     height: 3em;
-    width: 5em;
-    margin-left: -13vh;
+   width: 8em;
+     margin-left: -8em; 
     opacity: 0.7;
 }
-#fvid{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+/* #homevideo{
+    width: 8em;
+    margin-left: -8em;
 }
+#showrecvideo{
+    width: 8em;
+    margin-left: -8em;
+}
+#addrecvid{
+    width: 8em;
+    margin-left: -8em;
+}
+#searchrecvid{
+    width: 8em;
+    margin-left: -8em;
+} */

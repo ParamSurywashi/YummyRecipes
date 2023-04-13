@@ -22,6 +22,7 @@ function AddUser() {
           console.log(data);
           setValue(data);
           setMessage("Successfully User Added");
+          document.getElementById("msg").style.color="green";
           setInputValue({ username : "", email : "", password:"", conformpassword:""});
     })
   }

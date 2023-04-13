@@ -4,20 +4,15 @@ import "../styles/Header.css";
 import {MdSearch, MdFoodBank} from "react-icons/md";
 import { IoFastFoodOutline, IoRestaurantSharp } from "react-icons/io5";
 import firstVideo from "../navvideo/firstvideo.mp4";
+import secondVideo from "../navvideo/secondvid.mp4";
+import thirdVideo from "../navvideo/thirdvid.mp4";
+import searchVideo from "../navvideo/searchvid.mp4"
 
 function Header() {
   const [isHoveronHome, setHoveronHome] = useState(true);
-
-  function getVideo(vidlink){
-    
-
-      // return (
-        
-      // )
-  }
-  // document.getElementById("fvid").addEventListener("mouseover", () => {
-  //       setHoveronHome(true);
-  // });
+  const [isHoveronShowRecipe, setHoveronShowRecipe] = useState(true);
+  const [isHoveronAddRecipe, setHoveronAddRecipe] = useState(true);
+  const [isHoveronSearchRecipe, setHoveronSearchRecipe] = useState(true);
   
   return (
     <>
@@ -32,13 +27,28 @@ function Header() {
         </Link>
       </ul>
       <ul>
-        <Link to="/" className='linkComp'> <MdFoodBank /> Shows Recipe </Link>
+        <Link to="/" className='linkComp' id='showRecId' onMouseEnter={()=>setHoveronShowRecipe(false)} onMouseLeave={()=>setHoveronShowRecipe(true)}> 
+        <> <MdFoodBank /> Shows Recipe </>
+        {(isHoveronShowRecipe) ? ("") : ( <video autoPlay loop muted playsInline className='vidbox'>
+             <source src={secondVideo} type="video/mp4"/>
+         </video>)}
+        </Link>
       </ul>
       <ul>
-        <Link to="/addrecipe" className='linkComp'> <IoFastFoodOutline /> Add Recipe </Link>
+        <Link to="/addrecipe" className='linkComp' id='addRecId'onMouseEnter={()=>setHoveronAddRecipe(false)} onMouseLeave={()=>setHoveronAddRecipe(true)}> 
+        <> <IoFastFoodOutline /> Add Recipe </>
+        {(isHoveronAddRecipe) ? ("") : ( <video autoPlay loop muted playsInline className='vidbox'>
+             <source src={thirdVideo} type="video/mp4"/>
+         </video>)}
+         </Link>
       </ul>
       <ul>
-      <Link to="/search" className='linkComp'> <MdSearch /> Search</Link>
+      <Link to="/search" className='linkComp' id='searchId' onMouseEnter={()=>setHoveronSearchRecipe(false)} onMouseLeave={()=>setHoveronSearchRecipe(true)}> 
+        <> <MdSearch /> Search </>
+        {(isHoveronSearchRecipe) ? ("") : ( <video autoPlay loop muted playsInline className='vidbox'>
+             <source src={searchVideo} type="video/mp4"/>
+         </video>)}
+        </Link>
       </ul>
     </div>
 
