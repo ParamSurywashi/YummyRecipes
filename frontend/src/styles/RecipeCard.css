@@ -30,3 +30,8 @@
     height: 80px;
     overflow-y: hidden;
 }
+.readmore{
+    color: blue;
+    margin-left: 16em;
+    width: fit-content;
+}
