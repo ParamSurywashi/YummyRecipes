@@ -1,19 +1,11 @@
 import React,{useState, useEffect} from 'react';
 import "../styles/ShowRecipe.css";
 
-function ShowRecipe() {
+function ShowRecipe({recList}) {
     const [recipeList , setRecipeList] = useState([]);
-
-    function fetchRecipes(){
-      return fetch('https://yummy-recipe-param.onrender.com/recipe').then((res)=>res.json())
-      .then((data)=>{
-        console.log(data);
-        setRecipeList(data);
-      })
-    }
-  
+    
     useEffect(()=>{
-       fetchRecipes();
+      setRecipeList(recList);
     },[]);
 
   return (

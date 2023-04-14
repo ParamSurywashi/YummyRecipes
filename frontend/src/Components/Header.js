@@ -18,7 +18,7 @@ function Header() {
   return (
     <>
     <div className="headers">
-       <Link to="/" id='imgLogos'><div><img src={imgLogo} /></div> </Link>
+       <Link to="/home" id='imgLogos'><div><img src={imgLogo} /></div> </Link>
       <ul>
         <Link to="/home" className='linkComp' id='fvid' onMouseEnter={()=>setHoveronHome(false)} onMouseLeave={()=>setHoveronHome(true)}>
           <span id='hometxtbox'> <IoRestaurantSharp /> Home </span> 
