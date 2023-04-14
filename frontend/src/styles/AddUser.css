@@ -83,3 +83,34 @@ body
     color: salmon;
     width: fit-content;
 }
+
+
+@media screen and (max-width: 450px) {
+  
+    .container{
+        display: flex;
+        flex-direction: column;
+        height: 51em;
+        padding-bottom: 1vh;
+    }
+    .burger{
+        height: 20%;
+        position: relative;
+        animation: burgerGradient 4s ease infinite;
+    }
+    @keyframes burgerGradient {
+        0%   {left:0px; top:0px;}
+        50%  {left:100px; top:0px;}
+        100%  {left:0px; top:0px;}
+    }
+    .register{
+        width: 50%;
+       padding: 3em;
+     }
+     #signH2{
+     font-size: 32px;
+    }
+    .form__field input{
+     padding-left: 0px;
+    }
+}
