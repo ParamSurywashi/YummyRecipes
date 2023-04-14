@@ -1,18 +1,20 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState, useEffect, useContext} from 'react';
+import { recipeContext} from '../App';
 import "../styles/ShowRecipe.css";
 
-function ShowRecipe({recList}) {
-    const [recipeList , setRecipeList] = useState([]);
+function ShowRecipe() {
+  const getRecipeList = useContext(recipeContext);
+   // const [recipeList , setRecipeList] = useState([]);
     
-    useEffect(()=>{
-      setRecipeList(recList);
-    },[]);
+    // useEffect(()=>{
+    //   setRecipeList(getRecipeList);
+    // },[]);
 
   return (
           <>
              <div className='recipeshowBox'>
               {
-                (recipeList && recipeList.map((recipe)=>{
+                (getRecipeList && getRecipeList.map((recipe)=>{
                      return(
                         <div className='recviewcard' key={recipe.reckey}>
                           <img src={recipe.img} alt={recipe.title} />
