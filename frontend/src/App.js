@@ -6,6 +6,7 @@ import Header from "./Components/Header";
 import Home from "./Components/Home";
 import LoginUser from "./Components/LoginUser";
 import Search from "./Components/Search";
+import ShowRecipe from "./Components/ShowRecipe";
 function App() {
    // const[start, setStart] = useState("");
 
@@ -32,6 +33,12 @@ function App() {
         <>
          <Header />
           <AddRecipe />
+        </>
+      } />
+        <Route path="/showrecipe" element={
+        <>
+         <Header />
+          <ShowRecipe />
         </>
       } />
       <Route path="/search" element={

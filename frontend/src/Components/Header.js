@@ -28,7 +28,7 @@ function Header() {
         </Link>
       </ul>
       <ul>
-        <Link to="/" className='linkComp' id='showRecId' onMouseEnter={()=>setHoveronShowRecipe(false)} onMouseLeave={()=>setHoveronShowRecipe(true)}> 
+        <Link to="/showrecipe" className='linkComp' id='showRecId' onMouseEnter={()=>setHoveronShowRecipe(false)} onMouseLeave={()=>setHoveronShowRecipe(true)}> 
         <> <MdFoodBank /> Shows Recipe </>
         {(isHoveronShowRecipe) ? ("") : ( <video autoPlay loop muted playsInline className='vidbox'>
              <source src={secondVideo} type="video/mp4"/>
