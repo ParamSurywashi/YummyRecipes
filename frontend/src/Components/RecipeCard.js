@@ -26,6 +26,7 @@ function RecipeCard({recipe}) {
        <img src={recipe.img} alt={recipe.title} />
        <p className='decrecipe'>{recipe.recipe}</p>
        <p className='readmore' id={recipe.reckey} onClick={handlereadmore}>--- Read more ---</p>
+    
     </>
   )
 }

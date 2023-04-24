@@ -9,6 +9,8 @@
     border-radius: 40px;
     margin: 1em;
     overflow-y: hidden;
+    box-shadow:  14px 14px 28px #ff0a7c,
+             -14px -14px 28px  yellow;
 }
 .cardBox img{
     position: relative;

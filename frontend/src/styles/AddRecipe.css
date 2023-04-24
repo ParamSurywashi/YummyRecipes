@@ -24,3 +24,23 @@
     margin-left: 14em;
     margin-top: -3em;
 }
+.urlfilebox{
+    display: flex;
+    flex-direction: row;
+}
+.urlfilebox input{
+    font-size: 8px;
+}
+.urlfilebox >label{
+   color: wheat;
+   font-size: 22px;
+   margin-right: 3em;
+}
+#FILE{
+    display: none;
+    box-shadow: none;
+    width: 80%;
+}
+#mixDiv{
+    display: flex;
+}

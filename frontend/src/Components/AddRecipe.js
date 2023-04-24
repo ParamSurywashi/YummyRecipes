@@ -1,13 +1,19 @@
 import React,{useState, useEffect} from 'react';
 import { MutatingDots } from  'react-loader-spinner';
 import "../styles/AddRecipe.css";
-
+import { Upload } from "upload-js";
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 function AddRecipe() {
-    const [recipeValue, setRecipeValue] = useState({ recid : 0, title : "", ingredent:"", img:"", recipe : ""}); 
+    const [recipeValue, setRecipeValue] = useState({ reckey : 0, title : "", ingredent:"", img:"", recipe : ""}); 
     const [dbnextid, setDbNewId] = useState(0);
     const [message, setMessage] = useState("");
+    //const [imgurl, setImgurl] = useState("");
     const [loading, setLoading] = useState(true);
+    const [seeProgressBar, setSeeProgressBar] = useState(true);
+    const [upload, setUpload] = useState("URL");
+    const [percentage, setPercentage] = useState(0);
 
     const handleAddRecipeBtn = (e)=>{
      setMessage("");
@@ -27,23 +33,76 @@ function AddRecipe() {
               setMessage("Successfully Recipe Added");
             }
             setLoading(true);
-            setRecipeValue({ recid : 0, title : "", ingredent:"", img:"", recipe : ""});
+            setRecipeValue({ reckey : 0, title : "", ingredent:"", img:"", recipe : ""});
       })
     
     }
   
-  function getSizeFetch(){
-    return fetch('/recipe/getsize').then((res)=>res.json())
+  async function getSizeFetch(){
+   return await fetch('https://yummy-recipe-param.onrender.com/recipe/getsize').then(res=>res.json())
     .then((data)=>{
-     // console.log(data);
-     // setDbNewId(data+1);
+      //console.log(data);
       setRecipeValue({...recipeValue, reckey : data+1});
     })
+  }
+
+  const handleImage = (e)=>{
+    setSeeProgressBar(false);
+   // const url = URL.createObjectURL(e.target.files[0]);
+   const url = e.target.files[0];
+    console.log(url);
+   //setImgurl(url);
+  const newURL =  uploadImageGetURL(url);
+  console.log(newURL);
+  if(newURL){
+   setRecipeValue({...recipeValue, img : newURL });
+  }
+  }
+
+ async function uploadImageGetURL(url){
+    const upload = Upload({
+      apiKey: "public_kW15bFF9tZ9VSdQdNUBvaEBzyGwT" // Your real API key.
+    });
+    
+
+    try {
+      const { fileUrl } = await upload.uploadFile(
+        url,
+        { onProgress: ({ progress }) => {
+          //console.log(`${progress}% complete`)
+          setPercentage(progress);
+         } }
+      );
+     // alert(`File uploaded!\n${fileUrl}`);
+     if(fileUrl){
+      setRecipeValue({...recipeValue, img : fileUrl });
+     }
+      setSeeProgressBar(true);
+    } catch (e) {
+      setSeeProgressBar(true);
+    //  alert(`Error!\n${e.message}`);
+    }
   }
 
   useEffect(()=>{
     getSizeFetch();
   },[]);
+
+  const handleRedioButtons = (e)=>{
+    setUpload(e.target.value);
+    setSeeProgressBar(true);
+    const idx = e.target.value;
+    if(idx === "URL"){
+      document.getElementById("FILE").style.display="none";
+      document.getElementById("URL").style.display="block";
+      
+    }else if(idx === "FILE"){
+     
+      document.getElementById("URL").style.display="none";
+      document.getElementById("FILE").style.display="block";
+    }
+    
+  }
 
   return (
     <>
@@ -59,9 +118,28 @@ function AddRecipe() {
         </div>
 
         <div className="form__field">
-          <input type="text" placeholder="Img URL" value={recipeValue.img} onChange={(e)=>setRecipeValue({...recipeValue, img : e.target.value })}  required/>
+        <div className='urlfilebox'>
+             <input type="radio"  value={"URL"} checked={upload === "URL"} onChange={handleRedioButtons}/>
+              <label htmlFor="URL">Url</label> 
+
+             <input type="radio" value={"FILE"}  checked={upload === "FILE"} onChange={handleRedioButtons}/>
+              <label htmlFor="FILE">File</label> 
         </div>
 
+          <input id='URL' type="text" placeholder="Img URL" value={recipeValue.img} onChange={(e)=>setRecipeValue({...recipeValue, img : e.target.value })}  />
+         <span id='mixDiv'> <input id='FILE' type="file" placeholder="Img File" multiple accept='image/*'  onChange={handleImage}  />
+          <span id='progressBar' >{(!seeProgressBar) ? (<>
+            <CircularProgressbar  value={percentage} text={`${percentage}%`}  
+             styles={{
+              // Customize the root svg element
+              root: { width: '24%'},
+             }}/>
+          </>) : ("")}
+          </span>
+          </span>
+        </div>
+
+       
         <div className="form__field">
           <input type="text" placeholder="Recipe" value={recipeValue.recipe} onChange={(e)=>setRecipeValue({...recipeValue, recipe : e.target.value })}  required/>
         </div>
