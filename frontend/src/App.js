@@ -9,7 +9,7 @@ import LoginUser from "./Components/LoginUser";
 import Search from "./Components/Search";
 import ShowRecipe from "./Components/ShowRecipe";
 const recipeContext = createContext();
-
+const userContext = createContext();
 
 function App() {
    // const[start, setStart] = useState("");
@@ -25,59 +25,62 @@ function App() {
       setRecGllobalList(data);
     })
   }
-  function handleUser(usr){
-    //console.log("   ===> "+usr);
-    setUserdata(usr);
-  }
+  // function handleUser(usr){
+  //   //console.log("   ===> "+usr);
+  //   setUserdata(usr);
+  // }
 
   useEffect(()=>{
     fetchRecipesGlobally();
   },[]);
 
-  //recList={recGloablList}
+  //recList={recGloablList} handleUser={handleUser}
   return (
     <recipeContext.Provider value={recGloablList}>
+     
     <HashRouter>
     <Routes>
+
       <Route path="/" element={
-        <LoginUser handleUser={handleUser}/>
+        <LoginUser />
       } />
       <Route path="/adduser" element={
          <AddUser />
       } />
        <Route path="/login" element={
-        <LoginUser handleUser={handleUser}/>
+        <LoginUser />
       } />
+
      <Route path="/home" element={
         <>
-         <Header user={userdata} />
-          <Home />
+         <Header/>
+         <Home />
         </>
       } />
        <Route path="/addrecipe" element={
         <>
-        <Header user={userdata} />
-          <AddRecipe />
+        <Header />
+        <AddRecipe />
         </>
       } />
         <Route path="/showrecipe" element={
         <>
-        <Header user={userdata} />
-          <ShowRecipe/>
+        <Header />
+        <ShowRecipe/>
         </>
       } />
       <Route path="/search" element={
         <>
-        <Header user={userdata} />
+        <Header />
           <Search />
         </>
       } />
     </Routes>
     </HashRouter>
-    
     </recipeContext.Provider>
+
   );
 }
 
 export default App;
-export {recipeContext};
+export {recipeContext, userContext};

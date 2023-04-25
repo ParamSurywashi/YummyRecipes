@@ -6,7 +6,7 @@ import { BallTriangle } from  'react-loader-spinner';
 
 import '../styles/LoginUser.css';
 
-function LoginUser({handleUser}) {
+function LoginUser() {
     const [loginValue, setloginValue] = useState({email : "", password:""}); 
     const [value, setValue] = useState("");
     const [message, setMessage] = useState("");
@@ -39,8 +39,9 @@ function LoginUser({handleUser}) {
           setMessage("Successfully Login");
           document.getElementById("msg").style.color="green";
             setTimeout(()=>{
+              window.localStorage.setItem("yummyrecipeuser", data.username);
               navigate('/home', {state : { user : data.username}});
-              handleUser(data.username);
+              // handleUser(data.username);
             },1500)
          }else{
           setMessage("Login failed");
@@ -51,8 +52,12 @@ function LoginUser({handleUser}) {
     })
    
     //console.log(loginValue);
-   
   }; 
+
+  const handleUserGuest = ()=>{
+    window.localStorage.setItem("yummyrecipeuser", "Guest");
+   }
+
   return (
   <div className="container">
 
@@ -87,7 +92,7 @@ function LoginUser({handleUser}) {
           />)
          }
       </form>
-      <Link to={"/home"} state={{ user : "Guest"}} className="guestLog" onClick={()=>handleUser("Guest")} >Using Guest User</Link>
+      <Link to={"/home"} state={{ user : "Guest"}} className="guestLog" onClick={handleUserGuest} >Using Guest User</Link>
       <Link to={"/adduser"} className="account" >You don't have account? Register Here</Link>
      <h3 id='msg'>{message}</h3>
     </div>
