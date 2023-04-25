@@ -1,10 +1,14 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import RecipeCard from './RecipeCard';
 import { recipeContext} from '../App';
 import "../styles/Home.css"
 
 function Home() {
   const getRecipeList = useContext(recipeContext);
+  const location = useLocation();
+  const userdata  = location.state?.user;
+ 
 //  const [recipeList , setRecipeList] = useState([]);
   //console.log(getRecipeList);
   // useEffect(()=>{
@@ -17,7 +21,7 @@ function Home() {
        <div>
       {getRecipeList && getRecipeList.map((recipe)=>{
         return  (
-          <div className='outerCardBox'>
+          <div className='outerCardBox' key={recipe.reckey}>
              <div className='cardBox' key={recipe.reckey}>
                 <RecipeCard recipe={recipe} />
              </div>

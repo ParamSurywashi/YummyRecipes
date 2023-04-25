@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 import "../styles/Header.css";
 import {MdSearch, MdFoodBank} from "react-icons/md";
 import { IoFastFoodOutline, IoRestaurantSharp } from "react-icons/io5";
@@ -8,12 +8,26 @@ import secondVideo from "../navvideo/secondvid.mp4";
 import addrecvid from "../navvideo/addrecvid.mp4";
 import searchVideo from "../navvideo/searchvid.mp4";
 import imgLogo from "../navvideo/imgLogos.png";
+import Avatar, { genConfig } from 'react-nice-avatar';
 
-function Header() {
+function Header({user}) {
+  console.log(user);
+  const config = genConfig({"sex": "man", "faceColor": "#F9C9B6", "earSize": "small", "eyeStyle": "circle", "noseStyle": "short", "mouthStyle": "laugh","shirtStyle": "hoody", "glassesStyle": "none", "hairColor": "#000", "hairStyle": "thick","hatStyle": "none", "hatColor": "#FC909F","eyeBrowStyle": "up","shirtColor": "#F4D150","bgColor": "#F48150"  }) 
+  //const config = genConfig("hi@dapi.to") 
   const [isHoveronHome, setHoveronHome] = useState(true);
   const [isHoveronShowRecipe, setHoveronShowRecipe] = useState(true);
   const [isHoveronAddRecipe, setHoveronAddRecipe] = useState(true);
   const [isHoveronSearchRecipe, setHoveronSearchRecipe] = useState(true);
+  const [logout, setLogout] = useState(false);
+
+
+  const HandleLogout = ()=>{
+     if(logout){
+        setLogout(false);
+     }else{
+       setLogout(true);
+     }
+  }
   
   return (
     <>
@@ -51,8 +65,16 @@ function Header() {
          </video>)}
         </Link>
       </ul>
-    </div>
 
+      
+      <div className='avatar' onClick={HandleLogout}>
+       <Avatar style={{ width: ' 4em', height: '4em' }} {...config} />
+       <span>{user}</span>
+     </div>
+     {(logout) ? ( <Link to={"/"} id='logoutbtn'>Logout</Link>) : ""}
+    
+    </div>
+  
     </>
 
   )

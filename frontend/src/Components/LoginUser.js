@@ -6,7 +6,7 @@ import { BallTriangle } from  'react-loader-spinner';
 
 import '../styles/LoginUser.css';
 
-function LoginUser() {
+function LoginUser({handleUser}) {
     const [loginValue, setloginValue] = useState({email : "", password:""}); 
     const [value, setValue] = useState("");
     const [message, setMessage] = useState("");
@@ -18,7 +18,7 @@ function LoginUser() {
     setMessage("");
     setLoading(false);
     event.preventDefault();
-    console.log(loginValue);
+  //  console.log(loginValue);
 
  //   setloginValue({...loginValue, token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhcmFtQGdtYWlsLmNvbSIsImlhdCI6MTY4MDY5MTMzOH0.sg3d6V3UJes7ok9jjym_T3iMvqQ1bDp4msAz7t33r4A"})
   
@@ -39,7 +39,8 @@ function LoginUser() {
           setMessage("Successfully Login");
           document.getElementById("msg").style.color="green";
             setTimeout(()=>{
-              navigate('/home');
+              navigate('/home', {state : { user : data.username}});
+              handleUser(data.username);
             },1500)
          }else{
           setMessage("Login failed");
@@ -86,8 +87,8 @@ function LoginUser() {
           />)
          }
       </form>
-      <Link to={"/home"} className="guestLog" >Using Guest User</Link>
-      <Link to={"/adduser"} className="account">You don't have account? Register Here</Link>
+      <Link to={"/home"} state={{ user : "Guest"}} className="guestLog" onClick={()=>handleUser("Guest")} >Using Guest User</Link>
+      <Link to={"/adduser"} className="account" >You don't have account? Register Here</Link>
      <h3 id='msg'>{message}</h3>
     </div>
 

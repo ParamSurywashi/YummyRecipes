@@ -79,6 +79,7 @@ function AddRecipe() {
      }
       setSeeProgressBar(true);
     } catch (e) {
+      setMessage("Unable to upload image")
       setSeeProgressBar(true);
     //  alert(`Error!\n${e.message}`);
     }
@@ -159,7 +160,7 @@ function AddRecipe() {
   visible={true}
  />)}
 
-    <h4>{message}</h4>
+    <h4 className='Errormsg'>{message}</h4>
       </form>
      
      

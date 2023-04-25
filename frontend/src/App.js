@@ -9,17 +9,25 @@ import LoginUser from "./Components/LoginUser";
 import Search from "./Components/Search";
 import ShowRecipe from "./Components/ShowRecipe";
 const recipeContext = createContext();
+
+
 function App() {
    // const[start, setStart] = useState("");
 
    const [recGloablList , setRecGllobalList] = useState([]);
-
+   const [userdata , setUserdata] = useState("");
+  //  const location = useLocation();
+   
    function fetchRecipesGlobally(){
     return fetch('https://yummy-recipe-param.onrender.com/recipe').then((res)=>res.json())
     .then((data)=>{
      // console.log(data);
       setRecGllobalList(data);
     })
+  }
+  function handleUser(usr){
+    //console.log("   ===> "+usr);
+    setUserdata(usr);
   }
 
   useEffect(()=>{
@@ -32,35 +40,35 @@ function App() {
     <HashRouter>
     <Routes>
       <Route path="/" element={
-        <LoginUser />
+        <LoginUser handleUser={handleUser}/>
       } />
       <Route path="/adduser" element={
          <AddUser />
       } />
        <Route path="/login" element={
-        <LoginUser />
+        <LoginUser handleUser={handleUser}/>
       } />
      <Route path="/home" element={
         <>
-         <Header />
+         <Header user={userdata} />
           <Home />
         </>
       } />
        <Route path="/addrecipe" element={
         <>
-         <Header />
+        <Header user={userdata} />
           <AddRecipe />
         </>
       } />
         <Route path="/showrecipe" element={
         <>
-         <Header />
+        <Header user={userdata} />
           <ShowRecipe/>
         </>
       } />
       <Route path="/search" element={
         <>
-         <Header />
+        <Header user={userdata} />
           <Search />
         </>
       } />

@@ -68,3 +68,20 @@
     66% { transform: translate(-5px, 1px) rotate(-1deg); }
     100% { transform: translate(1px, 1px) rotate(0deg); }
   }
+  .avatar{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #logoutbtn{
+    position: absolute;
+    right: 0;
+    margin: 8em 3em 0px 0px;
+    border: 1px solid grey;
+    text-decoration: none;
+    color: black;
+    padding: 1vh;
+    background-color: beige;
+  }

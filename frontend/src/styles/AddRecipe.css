@@ -44,3 +44,6 @@
 #mixDiv{
     display: flex;
 }
+.Errormsg{
+    color: red;
+}
