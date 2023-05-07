@@ -2,6 +2,9 @@ import React,{useState, useEffect} from 'react';
 import { MutatingDots } from  'react-loader-spinner';
 import "../styles/AddRecipe.css";
 import { Upload } from "upload-js";
+import { Image } from 'cloudinary-react';
+import axios from 'axios';
+
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
@@ -61,32 +64,57 @@ function AddRecipe() {
    setRecipeValue({...recipeValue, img : newURL });
   }
   }
+   
+   async function uploadImageGetURL(url){
+    //const CLOUDINARY_URL= "cloudinary://645667223493783:8Gq5xbJjnIME3ih4AzOJxT_-0Fo@dw8fhcogh";
+     const formData = new FormData();
+    formData.append('file', url);
+    formData.append('upload_preset', "fndtmqqc"); // Replace with your Cloudinary upload preset
+    console.log(formData);
+     
+    const response = await fetch(
+    `https://api.cloudinary.com/v1_1/dw8fhcogh/image/upload`,
+    {
+      method: 'POST',
+      body: formData,
+    }
+  );
 
- async function uploadImageGetURL(url){
-    const upload = Upload({
-      apiKey: "public_kW15bFF9tZ9VSdQdNUBvaEBzyGwT" // Your real API key.
-    });
+  const data = await response.json();
+
+if(data){
+  setPercentage(100);
+  setRecipeValue({...recipeValue, img : data.secure_url });
+  setSeeProgressBar(true);
+}else{
+  console.log("ERROR");
+}
+  }
+//  async function uploadImageGetURL(url){
+//     const upload = Upload({
+//       apiKey: "public_kW15bFF9tZ9VSdQdNUBvaEBzyGwT" // Your real API key.
+//     });
     
 
-    try {
-      const { fileUrl } = await upload.uploadFile(
-        url,
-        { onProgress: ({ progress }) => {
-          //console.log(`${progress}% complete`)
-          setPercentage(progress);
-         } }
-      );
-     // alert(`File uploaded!\n${fileUrl}`);
-     if(fileUrl){
-      setRecipeValue({...recipeValue, img : fileUrl });
-     }
-      setSeeProgressBar(true);
-    } catch (e) {
-      setMessage("Unable to upload image")
-      setSeeProgressBar(true);
-    //  alert(`Error!\n${e.message}`);
-    }
-  }
+//     try {
+//       const { fileUrl } = await upload.uploadFile(
+//         url,
+//         { onProgress: ({ progress }) => {
+//           //console.log(`${progress}% complete`)
+//           setPercentage(progress);
+//          } }
+//       );
+//      // alert(`File uploaded!\n${fileUrl}`);
+//      if(fileUrl){
+//       setRecipeValue({...recipeValue, img : fileUrl });
+//      }
+//       setSeeProgressBar(true);
+//     } catch (e) {
+//       setMessage("Unable to upload image")
+//       setSeeProgressBar(true);
+//     //  alert(`Error!\n${e.message}`);
+//     }
+//   }
 
   useEffect(()=>{
     getSizeFetch();
