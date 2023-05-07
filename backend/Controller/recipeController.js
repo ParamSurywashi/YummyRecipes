@@ -27,7 +27,14 @@ exports.searchRecipe = async (req,res)=>{
    const search = req.params.data;
     console.log(search);
     const searchData = new RegExp(search, "i");
-     const recipes =  await Recipe.find({ $or: [{ title: { $regex: searchData }}, {recipe: { $regex: searchData  }},{ ingredent: { $elemMatch: { $regex: searchData } } }] });
+     const recipes =  await Recipe.find({ $or: [{ title: { $regex: searchData }}, {recipe: { $regex: searchData  }},  {
+        ingredent: {
+          $elemMatch: {
+            $regex: searchData,
+            $expr: { $eq: ["$ingredent.0", "$$this"] }
+          }
+        }
+      }] });
      
      res.status(201).json(recipes);
 
